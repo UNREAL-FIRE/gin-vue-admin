@@ -13,9 +13,9 @@ func (e *WordRouter) InitWordRouter(Router *gin.RouterGroup) {
 	wordRouterWithoutRecord := Router.Group("word")
 	exaWordApi := v1.ApiGroupApp.ExampleApiGroup.WordApi
 	{
-		wordRouter.POST("word", exaWordApi.createWord)
+		wordRouter.POST("word", exaWordApi.CreateWord) // 新建一个单词
 	}
 	{
-		wordRouterWithoutRecord.GET("word", exaWordApi.getOneWord)
+		wordRouterWithoutRecord.GET("word", exaWordApi.GetOneWord) // 获取一个单词
 	}
 }

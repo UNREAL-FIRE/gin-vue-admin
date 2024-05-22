@@ -16,4 +16,5 @@ var (
 	OldAuthorityVerify     = Rules{"OldAuthorityId": {NotEmpty()}}
 	ChangePasswordVerify   = Rules{"Password": {NotEmpty()}, "NewPassword": {NotEmpty()}}
 	SetUserAuthorityVerify = Rules{"AuthorityId": {NotEmpty()}}
+	WordVerify             = Rules{"WordName": {NotEmpty()}, "Trans": {NotEmpty()}, "Usphone": {NotEmpty()}, "Ukphone": {NotEmpty()}}
 )
