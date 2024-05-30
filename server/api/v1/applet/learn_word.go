@@ -1,4 +1,4 @@
-package example
+package applet
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

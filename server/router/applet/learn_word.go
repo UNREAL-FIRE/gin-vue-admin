@@ -1,4 +1,4 @@
-package example
+package applet
 
 import (
 	v1 "github.com/flipped-aurora/gin-vue-admin/server/api/v1"
@@ -9,13 +9,13 @@ import (
 type WordRouter struct{}
 
 func (e *WordRouter) InitWordRouter(Router *gin.RouterGroup) {
-	wordRouter := Router.Group("applet").Use(middleware.OperationRecord())
-	wordRouterWithoutRecord := Router.Group("applet")
+	wordRouter := Router.Group("word").Use(middleware.OperationRecord())
+	wordRouterWithoutRecord := Router.Group("word")
 	exaWordApi := v1.ApiGroupApp.ExampleApiGroup.WordApi
 	{
-		wordRouter.POST("applet", exaWordApi.CreateWord) // 新建一个单词
+		wordRouter.POST("word", exaWordApi.CreateWord) // 新建一个单词
 	}
 	{
-		wordRouterWithoutRecord.GET("applet", exaWordApi.GetOneWord) // 获取一个单词
+		wordRouterWithoutRecord.GET("pageWord", exaWordApi.GetOneWord) // 获取一个单词
 	}
 }
