@@ -42,6 +42,7 @@ func Routers() *gin.Engine {
 	InstallPlugin(Router) // 安装插件
 	systemRouter := router.RouterGroupApp.System
 	exampleRouter := router.RouterGroupApp.Example
+	appletRouter := router.RouterGroupApp.Applet
 	// 如果想要不使用nginx代理前端网页，可以修改 web/.env.production 下的
 	// VUE_APP_BASE_API = /
 	// VUE_APP_BASE_PATH = http://localhost
@@ -68,10 +69,9 @@ func Routers() *gin.Engine {
 		})
 	}
 	{
-		systemRouter.InitBaseRouter(PublicGroup)  // 注册基础功能路由 不做鉴权
-		systemRouter.InitInitRouter(PublicGroup)  // 自动初始化相关
-		exampleRouter.InitWordRouter(PublicGroup) // 单词路由 to c 不做鉴权
-
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
+		systemRouter.InitInitRouter(PublicGroup) // 自动初始化相关
+		appletRouter.InitWordRouter(PublicGroup) // 小程序接口 单词路由 toc 不做鉴权
 	}
 	PrivateGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
 	PrivateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
@@ -92,7 +92,6 @@ func Routers() *gin.Engine {
 		systemRouter.InitSysExportTemplateRouter(PrivateGroup)      // 导出模板
 		exampleRouter.InitCustomerRouter(PrivateGroup)              // 客户路由
 		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
-
 	}
 
 	global.GVA_LOG.Info("router register success")

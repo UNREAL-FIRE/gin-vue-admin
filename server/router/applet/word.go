@@ -11,11 +11,12 @@ type WordRouter struct{}
 func (e *WordRouter) InitWordRouter(Router *gin.RouterGroup) {
 	wordRouter := Router.Group("word").Use(middleware.OperationRecord())
 	wordRouterWithoutRecord := Router.Group("word")
-	exaWordApi := v1.ApiGroupApp.ExampleApiGroup.WordApi
+	wordApi := v1.ApiGroupApp.AppletApiGroup.WordApi
 	{
-		wordRouter.POST("word", exaWordApi.CreateWord) // 新建一个单词
+		wordRouter.POST("word", wordApi.CreateWord) // 新建一个单词
 	}
 	{
-		wordRouterWithoutRecord.GET("pageWord", exaWordApi.GetOneWord) // 获取一个单词
+		wordRouterWithoutRecord.GET("word", wordApi.GetOneWord)    // 获取单个单词
+		wordRouterWithoutRecord.POST("wordPage", wordApi.WordPage) // 根据词库和章节获取20个单词
 	}
 }

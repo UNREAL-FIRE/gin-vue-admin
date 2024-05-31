@@ -1,6 +1,7 @@
 package initialize
 
 import (
+	"github.com/flipped-aurora/gin-vue-admin/server/model/applet"
 	"os"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
@@ -32,6 +33,8 @@ func RegisterTables() {
 	db := global.GVA_DB
 	err := db.AutoMigrate(
 
+		applet.EnglishWord{},
+
 		system.SysApi{},
 		system.SysUser{},
 		system.SysBaseMenu{},
@@ -53,7 +56,6 @@ func RegisterTables() {
 		example.ExaCustomer{},
 		example.ExaFileChunk{},
 		example.ExaFileUploadAndDownload{},
-		example.ExaWord{},
 	)
 	if err != nil {
 		global.GVA_LOG.Error("register table failed", zap.Error(err))

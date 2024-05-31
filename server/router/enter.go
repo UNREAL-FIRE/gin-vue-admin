@@ -9,7 +9,7 @@ import (
 type RouterGroup struct {
 	System  system.RouterGroup
 	Example example.RouterGroup
-	Word    applet.RouterGroup
+	Applet  applet.RouterGroup
 }
 
 var RouterGroupApp = new(RouterGroup)
