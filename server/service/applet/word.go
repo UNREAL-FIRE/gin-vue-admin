@@ -8,16 +8,6 @@ import (
 
 type WordService struct{}
 
-func (wordService *WordService) CreateExaWord(e applet.EnglishWord) (err error) {
-	err = global.GVA_DB.Create(&e).Error
-	return err
-}
-
-func (wordService *WordService) GetOneWord(id uint) (word applet.EnglishWord, err error) {
-	err = global.GVA_DB.Where("id = ?", id).First(&word).Error
-	return
-}
-
 func (wordService *WordService) WordPage(search appletReq.WordPage) (list []applet.EnglishWord, total int64, err error) {
 	limit := search.PageSize
 	offset := search.PageSize * (search.Page - 1)
