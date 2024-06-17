@@ -69,9 +69,10 @@ func Routers() *gin.Engine {
 		})
 	}
 	{
-		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
-		systemRouter.InitInitRouter(PublicGroup) // 自动初始化相关
-		appletRouter.InitWordRouter(PublicGroup) // 小程序接口 单词路由 toc 不做鉴权
+		systemRouter.InitBaseRouter(PublicGroup)    // 注册基础功能路由 不做鉴权
+		systemRouter.InitInitRouter(PublicGroup)    // 自动初始化相关
+		appletRouter.InitWordRouter(PublicGroup)    // 小程序接口 单词路由 toc 不做鉴权
+		appletRouter.InitOpinionRouter(PublicGroup) // 小程序意见反馈接口
 	}
 	PrivateGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
 	PrivateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())

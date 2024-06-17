@@ -28,5 +28,6 @@ func (e *WordApi) WordPage(c *gin.Context) {
 		Total:    total,
 		Page:     search.Page,
 		PageSize: search.PageSize,
+		PageNum:  int(total)/search.PageSize + 1,
 	}, "获取成功", c)
 }
