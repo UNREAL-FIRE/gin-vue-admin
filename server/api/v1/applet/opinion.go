@@ -12,7 +12,7 @@ import (
 type OpinionApi struct {
 }
 
-func (e *OpinionApi) createOpinion(c *gin.Context) {
+func (e *OpinionApi) CreateOpinion(c *gin.Context) {
 	var opinion applet.Opinion
 	err := c.ShouldBindJSON(&opinion)
 	if err != nil {

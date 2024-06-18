@@ -12,6 +12,6 @@ func (e *OpinionRouter) InitOpinionRouter(Router *gin.RouterGroup) {
 	OpinionRouterWithoutRecord := Router.Group("opinion")
 	opinionApi := v1.ApiGroupApp.AppletApiGroup.OpinionApi
 	{
-		OpinionRouterWithoutRecord.POST("opinion", opinionApi.createOpinion)
+		OpinionRouterWithoutRecord.POST("opinion", opinionApi.CreateOpinion)
 	}
 }
